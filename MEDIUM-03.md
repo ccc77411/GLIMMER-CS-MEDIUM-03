@@ -154,11 +154,15 @@ int main(){
 - 刚看完这一题的时候是还没什么头绪的，然后我就去查了一下`chdir()``opendir()`和`readdir()`的用法，再结合前面对ls命令的实现，我就有了想法，一开始我想的是先读取一下当前目录的Inode编号，然后转到父目录，在父目录中找到与这一编号相同的子目录然后打印出来，这样一直向上，直到根目录。但写到一半发现这样打印出来的路径是反过来的。所以我就想到了用数组先保存路径中每个目录的Inode编号，到头之后，再根据编号来向下找到路径中的目录，打印出名字。依照这个大概的自己先写出来了一版，交给AI检查。果不其然一堆bug，然后依照AI提示写出了上面的代码。在这一题AI主要是帮我检查出bug，加上一些自己没想到的情况，大体部分是我自己写的。
     
 **prompt**  
- - 其实我大部分都是把我的代码发给AI让它帮我检查所以下面只大概展示一下。
+ - 其实我大部分都是把我的代码发给AI让它帮我检查所以下面只大概展示一下。  
 <img width="836" height="572" alt="image" src="https://github.com/user-attachments/assets/c0a8c687-5007-46ec-a71e-1261a7ac4e57" />
-- 大部分都是像这样的问法。  
-<img width="855" height="563" alt="image" src="https://github.com/user-attachments/assets/51dd4471-1a2a-4ff0-bcbb-b03f036d29c7" />
-- 这里是看到AI用了snprintf就想知道下它的用法。  
+
+- 大部分都是像这样的问法。
+      
+<img width="855" height="563" alt="image" src="https://github.com/user-attachments/assets/51dd4471-1a2a-4ff0-bcbb-b03f036d29c7" /> 
+
+- 这里是看到AI用了snprintf就想知道下它的用法。
+   
 ## 最终境：算帝—— 递归与文件筛选  
 ### 【任务 4.1：敢问，路在何方？】  
 **补全的代码**  
